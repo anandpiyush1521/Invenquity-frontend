@@ -67,9 +67,9 @@ function Home() {
 
         {/* Buttons Section */}
         <div className="flex gap-4">
-          <button className="bg-blue-700 hover:bg-blue-800 px-6 py-3 rounded-lg text-white font-medium shadow-lg hover:shadow-xl transition duration-300">
-            Source Code
-          </button>
+        <a href="https://github.com/anandpiyush1521/Invenquity" target="_blank" rel="noopener noreferrer" className="bg-blue-700 hover:bg-blue-800 px-6 py-3 rounded-lg text-white font-medium shadow-lg hover:shadow-xl transition duration-300">
+          Source Code
+        </a>
         </div>
       </section>
     </div>
