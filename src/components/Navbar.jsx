@@ -8,34 +8,43 @@ function Navbar() {
   useEffect(() => {
     // Check if the user is logged in by checking if the JWT token is present
     const token = localStorage.getItem("token");
+    console.log("token");
     if (token) {
       setIsLoggedIn(true);
     }
   }, []);
 
   const handleLogout = async () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token"); // Get the JWT token
+  
+    if (!token) {
+      console.error("No token found");
+      return;
+    }
   
     try {
-      const response = await fetch("http://localhost:8080/logout", {
+      const response = await fetch("http://localhost:8080/api/invenquity/logout", {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${token}`,
+          "Authorization": `Bearer ${token}`, // Include Bearer prefix
+          "Content-Type": "application/json",
         },
       });
   
-      const data = await response.json();
       if (response.ok) {
-        console.log(data); // User logged out successfully
-        localStorage.removeItem("token");
-        // Redirect user to login page
+        console.log("User logged out successfully");
+        localStorage.removeItem("token"); // Remove token from storage
+        setIsLoggedIn(false); // Update login state
+        navigate("/login"); // Redirect to login page
       } else {
-        console.log(data); // Handle error
+        const errorText = await response.text(); // Read plain text error response
+        console.error("Logout failed:", errorText);
       }
     } catch (error) {
       console.error("Error logging out:", error);
     }
   };
+  
 
   return (
     <div>
@@ -49,7 +58,7 @@ function Navbar() {
         <div>
           {isLoggedIn ? (
             <>
-              <a href="/admin" className="bg-black text-white px-4 py-2 rounded-md mr-2">
+              <a href="/admin-home" className="bg-black text-white px-4 py-2 rounded-md mr-2">
                 Admin Dashboard
               </a>
               <button

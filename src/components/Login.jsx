@@ -37,7 +37,7 @@ function Login() {
 
         // Redirect based on role
         if (decodedToken.role === 'ADMIN') {
-          navigate('/admin');
+          navigate('/admin-home');
         } else {
           navigate('/'); // Default redirect
         }

@@ -5,6 +5,9 @@ import Home from './pages/Home/Home';
 import Login from './components/Login';
 import ForgotPassword from './components/ForgotPassword';
 import AdminLogin from './pages/Admin/AdminLogin';
+import AdminHome from './pages/Admin/AdminHome';
+import UserDetails from './pages/Admin/UserOperation/UserDetails';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -17,9 +20,11 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/admin-login" element={<AdminLogin />} />
+            <Route path="/admin-home" element={<AdminHome />} />
+            <Route path="/admin/user-details" element={<UserDetails />} />
           </Routes>
         </div>
-        {/* <Footer />  Add the Footer component */}
+        <Footer />  
       </BrowserRouter>
     </div>
   );

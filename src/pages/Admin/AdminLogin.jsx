@@ -15,7 +15,7 @@ function AdminLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage(""); // Clear previous messages
-
+  
     try {
       const response = await fetch('http://localhost:8080/api/invenquity/login', {
         method: 'POST',
@@ -24,22 +24,25 @@ function AdminLogin() {
         },
         body: JSON.stringify(input),
       });
-
+  
       const data = await response.json();
-
+  
       if (response.ok) {
         // Save the JWT token to localStorage
         localStorage.setItem('token', data.jwt);
-
-        // Decode the JWT token (optional)
+  
+        // Decode the JWT token
         const decodedToken = JSON.parse(atob(data.jwt.split('.')[1]));
         console.log('Decoded Token:', decodedToken);
-
-        // Redirect based on role
+  
+        // Check user role
         if (decodedToken.role === 'ADMIN') {
-          navigate('/admin');
+          navigate('/admin-home'); // Redirect to admin home
         } else {
-          navigate('/'); // Default redirect
+          // Remove token if the role is not ADMIN
+          localStorage.removeItem('token');
+          setMessage('Access denied. Only ADMIN users are allowed!');
+          setMessageType('error');
         }
       } else {
         setMessage(data.message || 'Login failed!');
@@ -50,6 +53,7 @@ function AdminLogin() {
       setMessageType('error');
     }
   };
+  
 
   return (
     <div className="min-h-screen text-white flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">

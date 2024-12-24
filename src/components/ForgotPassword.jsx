@@ -14,11 +14,42 @@ function ForgotPassword() {
   const [loading, setLoading] = useState(false); // State for loading spinner
 
   const handleRequestOtp = async () => {
-    
+    try {
+      setLoading(true); // Show loading spinner
+      await axios.post("http://localhost:8080/api/invenquity/request-otp", { email });
+      setMessage("OTP sent to your email.");
+      setMessageType("success");
+      setStep(2);
+    } catch (error) {
+      setMessage("Failed to send OTP: " + (error.response?.data || error.message));
+      setMessageType("error");
+    } finally {
+      setLoading(false); // Hide loading spinner
+    }
   };
 
   const handleVerifyOtp = async () => {
-    
+    try {
+      setLoading(true); // Show loading spinner
+      const requestBody = {
+        otp,
+        user: {
+          email,
+          password: newPassword,
+        },
+      };
+
+      await axios.post("http://localhost:8080/api/invenquity/verify-otp", requestBody);
+      setMessage("Password reset successfully.");
+      setMessageType("success");
+      setStep(3);
+      navigate("/login");
+    } catch (error) {
+      setMessage("Failed to reset password: " + (error.response?.data || error.message));
+      setMessageType("error");
+    } finally {
+      setLoading(false); // Hide loading spinner
+    }
   };
 
   useEffect(() => {
@@ -129,7 +160,7 @@ function ForgotPassword() {
 
         {step === 2 && (
           <form
-            className="mt-8 space-y-6 bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg"
+            className="mt-8 space-y-6 bg-white p-8 rounded-lg shadow-lg"
             onSubmit={(e) => {
               e.preventDefault();
               handleVerifyOtp();
