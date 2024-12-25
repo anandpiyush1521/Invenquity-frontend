@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import PageTitle from "../../components/PageTitle";
 
 function AdminLogin() {
   const [input, setInput] = useState({ username: "", password: "" });
@@ -57,6 +58,7 @@ function AdminLogin() {
 
   return (
     <div className="min-h-screen text-white flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <PageTitle title="InvenQuity | Admin Login" />
       <div className="max-w-md w-full space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-black">

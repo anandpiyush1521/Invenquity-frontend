@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import { jwtDecode } from 'jwt-decode';
+import PageTitle from '../../components/PageTitle';
 
 function AdminHome() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -34,6 +35,7 @@ function AdminHome() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-6">
+      <PageTitle title="InvenQuity | AdminHome" />
       <h1 className="text-5xl font-extrabold mb-8 text-center text-white animate__animated animate__fadeInDown">
         Admin Dashboard
       </h1>

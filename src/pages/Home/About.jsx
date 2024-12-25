@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PageTitle from '../../components/PageTitle';
 
 const About = () => {
   const [bgColor, setBgColor] = useState("from-violet-400 to-purple-500");
@@ -46,6 +47,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen">
+        <PageTitle title="InvenQuity | About us" />
       <section className={`relative bg-gradient-to-r ${bgColor} transition-all duration-1000 p-8`}>
         <div className="max-w-6xl mx-auto pt-16">
           <div className={`space-y-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>

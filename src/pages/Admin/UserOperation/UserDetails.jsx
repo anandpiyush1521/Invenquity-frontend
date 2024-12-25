@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import UserDetailsModal from './UserDetailsModal';
+import PageTitle from "../../../components/PageTitle";
 
 function UserDetails() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -119,6 +120,7 @@ function UserDetails() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
+      <PageTitle title="User Details" />
       <h1 className="text-4xl font-extrabold mb-8 text-center text-blue-600">
         User Details Dashboard
       </h1>

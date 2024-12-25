@@ -10,6 +10,7 @@ import {
 } from "react-chartjs-2";
 import "chart.js/auto";
 import Sidebar from "../../../components/Sidebar";
+import PageTitle from "../../../components/PageTitle";
 
 const ProductCharts = () => {
   const [chartsData, setChartsData] = useState(null);
@@ -156,6 +157,7 @@ const ProductCharts = () => {
 
   return (
     <div className="flex">
+      <PageTitle title="InvenQuity | Product Chart" />
       <Sidebar />
       <div className="flex-grow p-6 ml-4">
         <h2 className="text-3xl font-bold text-center mb-6">Advanced Product Visualizations</h2>

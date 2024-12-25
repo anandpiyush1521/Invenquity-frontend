@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Send, Phone, Mail, MapPin } from 'lucide-react';
+import PageTitle from '../../components/PageTitle';
 
 function Contact ()  {
   const [bgColor, setBgColor] = useState("from-green-400 to-teal-500");
@@ -21,11 +22,12 @@ function Contact ()  {
 
   return (
     <div className="min-h-screen">
+        <PageTitle title="InvenQuity | Contact" />
       <section className={`relative bg-gradient-to-r ${bgColor} transition-all duration-1000 p-8`}>
         <div className="max-w-6xl mx-auto pt-16">
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {/* Header */}
-            <div className="text-center text-white mb-16">
+            <div className="text-center text-white font-bold mb-16">
               <h1 className="text-6xl font-bold mb-6">Contact Us</h1>
               <p className="text-xl max-w-2xl mx-auto">
                 Have questions? We're here to help and would love to hear from you.
@@ -39,42 +41,42 @@ function Contact ()  {
                 <form className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-white mb-2">First Name</label>
+                      <label className="block text-white font-bold mb-2">First Name</label>
                       <input
                         type="text"
-                        className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+                        className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-black placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
                       />
                     </div>
                     <div>
-                      <label className="block text-white mb-2">Last Name</label>
+                      <label className="block text-white font-bold mb-2">Last Name</label>
                       <input
                         type="text"
-                        className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+                        className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-black placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
                       />
                     </div>
                   </div>
                   
                   <div>
-                    <label className="block text-white mb-2">Email</label>
+                    <label className="block text-white font-bold mb-2">Email</label>
                     <input
                       type="email"
-                      className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+                      className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-black placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-white mb-2">Subject</label>
+                    <label className="block text-white font-bold mb-2">Subject</label>
                     <input
                       type="text"
-                      className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+                      className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-black placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-white mb-2">Message</label>
+                    <label className="block text-white font-bold mb-2">Message</label>
                     <textarea
                       rows="5"
-                      className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+                      className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-black placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
                     ></textarea>
                   </div>
 
@@ -97,21 +99,21 @@ function Contact ()  {
                       <Phone className="h-6 w-6" />
                       <div>
                         <p className="font-semibold">Phone</p>
-                        <p>+1 (555) 123-4567</p>
+                        <p>+91 8340774684</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4 text-white">
                       <Mail className="h-6 w-6" />
                       <div>
                         <p className="font-semibold">Email</p>
-                        <p>contact@invenquity.com</p>
+                        <p>support@invenquity.com</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4 text-white">
                       <MapPin className="h-6 w-6" />
                       <div>
                         <p className="font-semibold">Address</p>
-                        <p>123 Business Ave, Tech City, TC 12345</p>
+                        <p>123 Business Ave, Tech City, Bengaluru 560100</p>
                       </div>
                     </div>
                   </div>

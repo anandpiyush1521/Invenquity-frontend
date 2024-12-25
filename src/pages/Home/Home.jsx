@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
+import PageTitle from "../../components/PageTitle";
 
 function Home() {
   // Greeting Logic
@@ -36,6 +37,7 @@ function Home() {
 
   return (
     <div>
+      <PageTitle title="InvenQuity | Home" />
       <section
         className={`relative flex flex-col items-center justify-center h-[80vh] bg-gradient-to-r ${waveColor} text-white transition-all duration-1000 p-10 rounded-lg shadow-lg m-8`}
       >

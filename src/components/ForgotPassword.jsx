@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import PageTitle from "./PageTitle";
 
 function ForgotPassword() {
   const navigate = useNavigate();
@@ -76,6 +77,7 @@ function ForgotPassword() {
 
   return (
     <div className="min-h-screen text-white flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <PageTitle title="InvenQuity | ForgotPassword" />
       <div className="max-w-md w-full space-y-8">
         <div>
           <h2 className="mt-6 text-center text-4xl font-extrabold text-black">

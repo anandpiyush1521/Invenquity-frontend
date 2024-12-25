@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import PageTitle from "../../../components/PageTitle";
 
 function UserRegistration() {
     const navigate = useNavigate();
@@ -224,6 +225,7 @@ function UserRegistration() {
     <div
       className="min-h-screen text-white"
     >
+        <PageTitle title="InvenQuity | User Registernation" />
       <div className="flex items-center justify-center h-full py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
