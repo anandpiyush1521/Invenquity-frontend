@@ -8,6 +8,11 @@ import AdminLogin from './pages/Admin/AdminLogin';
 import AdminHome from './pages/Admin/AdminHome';
 import UserDetails from './pages/Admin/UserOperation/UserDetails';
 import Footer from './components/Footer';
+import ProductHome from './pages/Products/ProductHome';
+import UserRegistration from './pages/Admin/UserOperation/UserRegistration';
+import About from './pages/Home/About';
+import Contact from './pages/Home/Contact';
+import ProductCharts from './pages/Products/Charts/ProductCharts';
 
 function App() {
   return (
@@ -17,11 +22,16 @@ function App() {
         <div className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/admin-login" element={<AdminLogin />} />
             <Route path="/admin-home" element={<AdminHome />} />
             <Route path="/admin/user-details" element={<UserDetails />} />
+            <Route path="/products" element={<ProductHome />} />
+            <Route path="/admin/user-registration" element={<UserRegistration />} />
+            <Route path="/product/visualization" element={<ProductCharts />} />
           </Routes>
         </div>
         <Footer />  

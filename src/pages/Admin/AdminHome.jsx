@@ -43,7 +43,7 @@ function AdminHome() {
       <div className="bg-white p-8 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 ease-in-out transform animate__animated animate__fadeInLeft">
           <h2 className="text-3xl font-bold mb-4 text-gray-800">User Registration</h2>
           <p className="text-gray-600 mb-6">Register users, Verify their details.</p>
-          <a href="/admin/user-details" className="inline-block bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition-all duration-300">
+          <a href="/admin/user-registration" className="inline-block bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition-all duration-300">
             Go to User Actions
           </a>
         </div>

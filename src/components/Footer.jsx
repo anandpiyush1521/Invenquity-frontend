@@ -21,12 +21,12 @@ function Footer() {
             <p className="font-bold mb-2">Company</p>
             <ul>
               <li>
-                <a href="/about-us" className="hover:text-indigo-600 transition">
+                <a href="/about" className="hover:text-indigo-600 transition">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="/contact-us" className="hover:text-indigo-600 transition">
+                <a href="/contact" className="hover:text-indigo-600 transition">
                   Contact Us
                 </a>
               </li>

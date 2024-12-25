@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function ForgotPassword() {
+function AdminForgotPassword() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
@@ -179,7 +179,7 @@ function ForgotPassword() {
               <div className="mb-5">
                 <label
                   htmlFor="otp"
-                  className="block mb-2 text-sm font-medium text-black"
+                  className="block mb-2 text-sm font-medium text-black dark:text-gray-300"
                 >
                   OTP
                 </label>
@@ -189,14 +189,14 @@ function ForgotPassword() {
                   name="otp"
                   value={otp}
                   onChange={(e) => setOtp(e.target.value)}
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-black rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-gray-900 dark:text-black rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                   required
                 />
               </div>
               <div className="mb-5">
                 <label
                   htmlFor="newPassword"
-                  className="block mb-2 text-sm font-medium text-black"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   New Password
                 </label>
@@ -206,22 +206,22 @@ function ForgotPassword() {
                   name="newPassword"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-black focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-gray-900 dark:text-black rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                   required
                 />
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-sm text-black">Time remaining: <span className="font-bold text-lg">{formatTime(timer)}</span></p>
+              <p className="text-sm text-gray-400">Time remaining: <span className="font-bold text-lg">{formatTime(timer)}</span></p>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800 dark:bg-blue-500 dark:hover:bg-blue-600"
                 disabled={loading} // Disable button when loading
               >
                 {loading ? ( // Show loading spinner when loading
                   <div className="flex items-center space-x-2">
                     <svg
-                      className="animate-spin h-5 w-5 text-green-900"
+                      className="animate-spin h-5 w-5 text-white"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -254,4 +254,4 @@ function ForgotPassword() {
   );
 }
 
-export default ForgotPassword;
+export default AdminForgotPassword;
