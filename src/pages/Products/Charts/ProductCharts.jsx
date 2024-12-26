@@ -1,16 +1,10 @@
 import React, { useState } from "react";
-import {
-  Bar,
-  Line,
-  Scatter,
-  Pie,
-  Radar,
-  PolarArea,
-  Bubble,
-} from "react-chartjs-2";
+import { Bar, Line, Scatter, Pie, Radar, PolarArea, Bubble } from "react-chartjs-2";
 import "chart.js/auto";
 import Sidebar from "../../../components/Sidebar";
 import PageTitle from "../../../components/PageTitle";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 const ProductCharts = () => {
   const [chartsData, setChartsData] = useState(null);
@@ -19,15 +13,11 @@ const ProductCharts = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await fetch(
-        "http://localhost:8080/api/invenquity/product"
-      );
+      const response = await fetch("http://localhost:8080/api/invenquity/product");
       const products = await response.json();
 
-      // Process categories
       const categories = [...new Set(products.map((p) => p.productCategory))];
 
-      // Calculate chart data
       const quantities = categories.map((category) =>
         products
           .filter((p) => p.productCategory === category)
@@ -50,7 +40,6 @@ const ProductCharts = () => {
       const qualityDistribution = products.map((p) => p.quality);
       const minimumProducts = products.map((p) => p.minimumProducts);
 
-      // Advanced Chart Data
       const radarRatings = {
         labels: categories,
         datasets: [
@@ -82,14 +71,13 @@ const ProductCharts = () => {
             {
               x: p.quantity,
               y: p.price,
-              r: p.rating * 3, // Bubble size based on rating
+              r: p.rating * 3,
             },
           ],
           backgroundColor: "rgba(75, 192, 192, 0.6)",
         })),
       };
 
-      // Set chart data
       setChartsData({
         quantitiesData: {
           labels: categories,
@@ -155,6 +143,24 @@ const ProductCharts = () => {
     }
   };
 
+  const downloadPDF = async () => {
+    const pdf = new jsPDF("p", "mm", "a4");
+    const chartContainers = document.querySelectorAll(".chart-container");
+
+    for (let i = 0; i < chartContainers.length; i++) {
+      const canvas = await html2canvas(chartContainers[i]);
+      const imgData = canvas.toDataURL("image/png");
+      const imgProps = pdf.getImageProperties(imgData);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+      if (i > 0) pdf.addPage();
+      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+    }
+
+    pdf.save("Product_Charts_Report.pdf");
+  };
+
   return (
     <div className="flex">
       <PageTitle title="InvenQuity | Product Chart" />
@@ -169,69 +175,36 @@ const ProductCharts = () => {
               loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600 text-white"
             }`}
           >
-            {loading ? (
-              <span className="flex items-center">
-                <svg
-                  className="animate-spin h-5 w-5 mr-3 text-white"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
-                Loading...
-              </span>
-            ) : (
-              "Fetch Data"
-            )}
+            {loading ? "Loading..." : "Fetch Data"}
           </button>
         </div>
 
         {chartsData && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Quantities by Category</h3>
-              <Bar data={chartsData.quantitiesData} />
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {Object.entries(chartsData).map(([key, data], index) => (
+                <div key={index} className="chart-container p-4 bg-white shadow rounded">
+                  <h3 className="text-xl font-semibold mb-4">{key.replace(/([A-Z])/g, " $1")}</h3>
+                  {key.includes("quantitiesData") && <Bar data={data} />}
+                  {key.includes("ratingsData") && <Line data={data} />}
+                  {key.includes("priceData") && <Bar data={data} />}
+                  {key.includes("qualityData") && <Pie data={data} />}
+                  {key.includes("scatterData") && <Scatter data={data} />}
+                  {key.includes("radarRatings") && <Radar data={data} />}
+                  {key.includes("polarPriceData") && <PolarArea data={data} />}
+                  {key.includes("bubbleData") && <Bubble data={data} />}
+                </div>
+              ))}
             </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Average Ratings by Category</h3>
-              <Line data={chartsData.ratingsData} />
+            <div className="flex justify-center mt-6">
+              <button
+                onClick={downloadPDF}
+                className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 shadow-md"
+              >
+                Download PDF
+              </button>
             </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Price Distribution by Category</h3>
-              <Bar data={chartsData.priceData} />
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Quality Distribution</h3>
-              <Pie data={chartsData.qualityData} />
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Quantity vs Minimum Products</h3>
-              <Scatter data={chartsData.scatterData} />
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Radar Chart - Ratings by Category</h3>
-              <Radar data={chartsData.radarRatings} />
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Polar Area Chart - Price Distribution</h3>
-              <PolarArea data={chartsData.polarPriceData} />
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Bubble Chart - Quantity vs Price vs Rating</h3>
-              <Bubble data={chartsData.bubbleData} />
-            </div>
-          </div>
+          </>
         )}
       </div>
     </div>

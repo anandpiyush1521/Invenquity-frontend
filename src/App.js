@@ -13,6 +13,7 @@ import UserRegistration from './pages/Admin/UserOperation/UserRegistration';
 import About from './pages/Home/About';
 import Contact from './pages/Home/Contact';
 import ProductCharts from './pages/Products/Charts/ProductCharts';
+import Notifications from './components/Notifications';
 
 function App() {
   return (
@@ -29,9 +30,10 @@ function App() {
             <Route path="/admin-login" element={<AdminLogin />} />
             <Route path="/admin-home" element={<AdminHome />} />
             <Route path="/admin/user-details" element={<UserDetails />} />
-            <Route path="/products" element={<ProductHome />} />
             <Route path="/admin/user-registration" element={<UserRegistration />} />
+            <Route path="/product/home" element={<ProductHome />} />
             <Route path="/product/visualization" element={<ProductCharts />} />
+            <Route path="/product/notifications" element={<Notifications />} />
           </Routes>
         </div>
         <Footer />  
