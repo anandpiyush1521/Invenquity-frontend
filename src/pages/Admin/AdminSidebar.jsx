@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SKUGuideDocument from "../Document/SKUGuideDocument";
+import SKUGuideDocument from "../../Document/SKUGuideDocument";
 
-function Sidebar() {
+function AdminSidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [showGuide, setShowGuide] = useState(false); // State to toggle the visibility of the guide
   const navigate = useNavigate();
@@ -63,7 +63,7 @@ function Sidebar() {
             {/* Dashboard */}
             <li>
               <a
-                href="/product/home"
+                href="/admin/product/dashboard"
                 className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
               >
                 <svg
@@ -94,9 +94,9 @@ function Sidebar() {
             </li>
 
             {/* Visualization */}
-            {/* <li>
+            <li>
               <a
-                href="/product/visualization"
+                href="/admin/product/visualization"
                 onClick={handleVisualizeDataClick}
                 className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
               >
@@ -107,12 +107,12 @@ function Sidebar() {
 
                 <span className="flex-1 ms-3 whitespace-nowrap">Visualize Data</span>
               </a>
-            </li> */}
+            </li>
 
             {/* Notifications */}
             <li className="relative">
               <a
-                href="/product/notifications"
+                href="/admin/product/notification"
                 className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -149,4 +149,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default AdminSidebar;
