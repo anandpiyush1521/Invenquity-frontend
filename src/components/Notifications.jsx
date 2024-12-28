@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CheckCircle, AlertCircle, Bell, Clock, XCircle, Trash, EyeOff } from "lucide-react";
 import Sidebar from "./Sidebar";
+import PageTitle from "./PageTitle";
 
 function Notifications() {
   const [notifications, setNotifications] = useState([]);
@@ -48,6 +49,7 @@ function Notifications() {
   return (
     <div className="flex">
       <Sidebar />
+      <PageTitle title="Notification" />
       <div className="ml-4 p-8 w-full">
         {/* Page Header */}
         <div className="flex items-center justify-between mb-6">

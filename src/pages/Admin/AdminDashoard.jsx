@@ -15,6 +15,7 @@ import {
   RefreshCcw,
   Download
 } from "lucide-react";
+import PageTitle from "../../components/PageTitle";
 
 // CSV Download Component
 const DownloadButton = ({ products }) => {
@@ -153,6 +154,7 @@ function AdminDashboard() {
   return (
     <div className="flex h-screen bg-gray-50">
       <AdminSidebar />
+      <PageTitle title="Admin Dashboard" />
 
       <div className="flex-grow p-6 overflow-y-auto">
         <div className="max-w-7xl mx-auto">
