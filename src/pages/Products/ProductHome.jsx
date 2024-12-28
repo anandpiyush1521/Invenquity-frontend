@@ -11,6 +11,7 @@ import {
   ShoppingCart,
   X,
 } from "lucide-react";
+import PageTitle from "../../components/PageTitle";
 
 function ProductHome() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -70,6 +71,7 @@ function ProductHome() {
   return (
     <div className="flex h-screen bg-gray-100">
       <Sidebar />
+      <PageTitle title="Product Dashboard" />
 
       {/* Main Content Area */}
       <div className="flex-grow p-6 bg-white overflow-y-auto">

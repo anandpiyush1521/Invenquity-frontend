@@ -18,6 +18,7 @@ import AdminDashboard from './pages/Admin/AdminDashoard';
 import AdminNotification from './pages/Admin/AdminNotification';
 import AdminProductChart from './pages/Admin/AdminProductChart';
 import Product from './pages/Products/Product';
+import AddProducts from './pages/Products/AddProducts';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
             <Route path="/product/notifications" element={<Notifications />} />
 
             <Route path="/product/" element={<Product />} />
+            <Route path="/product/add" element={<AddProducts />} />
           </Routes>
         </div>
         <Footer />  

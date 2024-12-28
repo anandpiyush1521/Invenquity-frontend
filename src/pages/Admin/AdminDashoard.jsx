@@ -12,9 +12,52 @@ import {
   X,
   ChevronDown,
   Filter,
-  RefreshCcw
+  RefreshCcw,
+  Download
 } from "lucide-react";
 
+// CSV Download Component
+const DownloadButton = ({ products }) => {
+  const downloadCSV = (products) => {
+    const headers = ['Product Name', 'SKU Code', 'Category', 'Price', 'Quantity', 'Rating'];
+    
+    const productsData = products.map(product => [
+      product.productName,
+      product.skuCode,
+      product.productCategory,
+      product.price,
+      product.quantity,
+      product.rating
+    ]);
+    
+    const csvContent = [
+      headers.join(','),
+      ...productsData.map(row => row.join(','))
+    ].join('\n');
+    
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'product_inventory.csv');
+    link.style.visibility = 'hidden';
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <button
+      onClick={() => downloadCSV(products)}
+      className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-all duration-300"
+    >
+      <Download className="h-4 w-4" />
+      Export CSV
+    </button>
+  );
+};
 
 function AdminDashboard() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -120,13 +163,16 @@ function AdminDashboard() {
                 Real-time overview of your inventory management system
               </p>
             </div>
-            <button 
-              onClick={() => window.location.reload()} 
-              className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow hover:shadow-md transition-all duration-300"
-            >
-              <RefreshCcw className="h-4 w-4" />
-              Refresh
-            </button>
+            <div className="flex gap-4">
+              <DownloadButton products={filteredProducts} />
+              <button 
+                onClick={() => window.location.reload()} 
+                className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow hover:shadow-md transition-all duration-300"
+              >
+                <RefreshCcw className="h-4 w-4" />
+                Refresh
+              </button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
