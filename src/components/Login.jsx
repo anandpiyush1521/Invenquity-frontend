@@ -38,9 +38,9 @@ function Login() {
 
         // Redirect based on role
         if (decodedToken.role === 'ADMIN') {
-          navigate('/admin-home');
+          navigate('/admin/product/dashboard');
         } else {
-          navigate('/'); // Default redirect
+          navigate('/product/home'); // Default redirect
         }
       } else {
         setMessage(data.message || 'Login failed!');
