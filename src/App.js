@@ -19,6 +19,7 @@ import AdminNotification from './pages/Admin/AdminNotification';
 import AdminProductChart from './pages/Admin/AdminProductChart';
 import Product from './pages/Products/Product';
 import AddProducts from './pages/Products/AddProducts';
+import AdminProductInfo from './pages/Admin/AdminProductInfo';
 
 function App() {
   return (
@@ -39,11 +40,12 @@ function App() {
             <Route path="/admin/product/dashboard" element={<AdminDashboard />} />
             <Route path="/admin/product/notification" element={<AdminNotification />} />
             <Route path="/admin/product/visualization" element={<AdminProductChart />} />
+            <Route path="/admin/product/product-info" element={<AdminProductInfo />} />
             <Route path="/product/home" element={<ProductHome />} />
             <Route path="/product/visualization" element={<ProductCharts />} />
             <Route path="/product/notifications" element={<Notifications />} />
 
-            <Route path="/product/" element={<Product />} />
+            <Route path="/product/product-info" element={<Product />} />
             <Route path="/product/add" element={<AddProducts />} />
           </Routes>
         </div>
