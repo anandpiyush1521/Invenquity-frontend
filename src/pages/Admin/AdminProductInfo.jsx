@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Camera, Search, Package, Filter, Star } from "lucide-react";
 import AdminSidebar from "./AdminSidebar";
+import PageTitle from "../../components/PageTitle";
 
 const AdminProductInfo = () => {
   const [products, setProducts] = useState([]);
@@ -49,6 +50,7 @@ const AdminProductInfo = () => {
 
   return (
     <div className="flex">
+      <PageTitle title="ADMIN | Product Details" />
       <AdminSidebar />
       <div className="flex-grow p-6 ml-4">
         <div className="flex min-h-screen bg-gray-50">
