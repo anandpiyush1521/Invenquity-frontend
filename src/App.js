@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Home from './pages/Home/Home';
 import Login from './components/Login';
@@ -18,6 +18,7 @@ import AdminDashboard from './pages/Admin/AdminDashoard';
 import AdminNotification from './pages/Admin/AdminNotification';
 import AdminProductChart from './pages/Admin/AdminProductChart';
 import Product from './pages/Products/Product';
+import SubscriptionForm from './pages/Home/SubscriptionForm';
 import AddProducts from './pages/Products/AddProducts';
 import AdminProductInfo from './pages/Admin/AdminProductInfo';
 
@@ -29,6 +30,7 @@ function App() {
         <div className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/subscription" element={<SubscriptionForm />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
@@ -44,7 +46,6 @@ function App() {
             <Route path="/product/home" element={<ProductHome />} />
             <Route path="/product/visualization" element={<ProductCharts />} />
             <Route path="/product/notifications" element={<Notifications />} />
-
             <Route path="/product/product-info" element={<Product />} />
             <Route path="/product/add" element={<AddProducts />} />
           </Routes>
