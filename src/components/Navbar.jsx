@@ -72,7 +72,7 @@ function Navbar() {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
     setShowSessionWarning(false);
-    navigate("/login");
+    navigate("/");
   };
 
   const handleLogout = async () => {

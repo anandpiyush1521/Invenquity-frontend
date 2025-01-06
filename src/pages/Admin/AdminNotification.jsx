@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CheckCircle, AlertCircle, Bell, Clock, XCircle, Trash, EyeOff } from "lucide-react";
 import AdminSidebar from "./AdminSidebar";
+import PageTitle from "../../components/PageTitle";
 
 function AdminNotification() {
   const [notifications, setNotifications] = useState([]);
@@ -48,6 +49,7 @@ function AdminNotification() {
   return (
     <div className="flex">
       <AdminSidebar />
+      <PageTitle title="Admin | Notifications" />
       <div className="ml-4 p-8 w-full">
         {/* Page Header */}
         <div className="flex items-center justify-between mb-6">
