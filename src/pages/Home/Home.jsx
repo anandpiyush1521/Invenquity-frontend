@@ -68,11 +68,15 @@ function Home() {
         </p>
 
         {/* Buttons Section */}
-        <div className="flex gap-4">
+        <div className="flex gap-4 justify-center mt-8">
         <a href="https://github.com/anandpiyush1521/Invenquity" target="_blank" rel="noopener noreferrer" className="bg-blue-700 hover:bg-blue-800 px-6 py-3 rounded-lg text-white font-medium shadow-lg hover:shadow-xl transition duration-300">
           Source Code
         </a>
+        <a href="/subscription" target="_blank" rel="noopener noreferrer" className="bg-blue-700 hover:bg-blue-800 px-6 py-3 rounded-lg text-white font-medium shadow-lg hover:shadow-xl transition duration-300">
+          Buy Subscription
+        </a>
         </div>
+
       </section>
     </div>
   );

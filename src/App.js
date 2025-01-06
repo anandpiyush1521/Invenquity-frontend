@@ -18,6 +18,7 @@ import AdminDashboard from './pages/Admin/AdminDashoard';
 import AdminNotification from './pages/Admin/AdminNotification';
 import AdminProductChart from './pages/Admin/AdminProductChart';
 import Product from './pages/Products/Product';
+import SubscriptionForm from './pages/Home/SubscriptionForm';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <div className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/subscription" element={<SubscriptionForm />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
