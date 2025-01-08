@@ -2,9 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Send, Phone, Mail, MapPin } from 'lucide-react';
 import PageTitle from '../../components/PageTitle';
 
-function Contact ()  {
+function Contact() {
   const [bgColor, setBgColor] = useState("from-green-400 to-teal-500");
   const [isVisible, setIsVisible] = useState(false);
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
 
   const colors = [
     "from-green-400 to-teal-500",
@@ -20,13 +28,48 @@ function Contact ()  {
     return () => clearInterval(interval);
   }, []);
 
+  // Handle form input changes
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:8080/api/invenquity/contact/save", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert("Your message is received, and soon someone from our side will contact you!");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          subject: "",
+          message: ""
+        });
+      } else {
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred. Please try again later.");
+    }
+  };
+
   return (
     <div className="min-h-screen">
-        <PageTitle title="InvenQuity | Contact" />
+      <PageTitle title="InvenQuity | Contact" />
       <section className={`relative bg-gradient-to-r ${bgColor} transition-all duration-1000 p-8`}>
         <div className="max-w-6xl mx-auto pt-16">
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            {/* Header */}
             <div className="text-center text-white font-bold mb-16">
               <h1 className="text-6xl font-bold mb-6">Contact Us</h1>
               <p className="text-xl max-w-2xl mx-auto">
@@ -34,33 +77,44 @@ function Contact ()  {
               </p>
             </div>
 
-            {/* Main Content */}
             <div className="grid md:grid-cols-2 gap-12">
               {/* Contact Form */}
               <div className="bg-white/10 backdrop-blur-md rounded-xl p-8 shadow-xl">
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-white font-bold mb-2">First Name</label>
                       <input
                         type="text"
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleChange}
                         className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-black placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+                        required
                       />
                     </div>
                     <div>
                       <label className="block text-white font-bold mb-2">Last Name</label>
                       <input
                         type="text"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleChange}
                         className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-black placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+                        required
                       />
                     </div>
                   </div>
-                  
+
                   <div>
                     <label className="block text-white font-bold mb-2">Email</label>
                     <input
                       type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-black placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+                      required
                     />
                   </div>
 
@@ -68,7 +122,11 @@ function Contact ()  {
                     <label className="block text-white font-bold mb-2">Subject</label>
                     <input
                       type="text"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-black placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+                      required
                     />
                   </div>
 
@@ -76,7 +134,11 @@ function Contact ()  {
                     <label className="block text-white font-bold mb-2">Message</label>
                     <textarea
                       rows="5"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-black placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+                      required
                     ></textarea>
                   </div>
 
@@ -118,24 +180,6 @@ function Contact ()  {
                     </div>
                   </div>
                 </div>
-
-                <div className="bg-white/10 backdrop-blur-md rounded-xl p-8 shadow-xl">
-                  <h2 className="text-2xl font-bold text-white mb-6">Business Hours</h2>
-                  <div className="space-y-4 text-white">
-                    <div className="flex justify-between">
-                      <span>Monday - Friday:</span>
-                      <span>9:00 AM - 6:00 PM</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Saturday:</span>
-                      <span>10:00 AM - 4:00 PM</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Sunday:</span>
-                      <span>Closed</span>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -143,6 +187,6 @@ function Contact ()  {
       </section>
     </div>
   );
-};
+}
 
 export default Contact;

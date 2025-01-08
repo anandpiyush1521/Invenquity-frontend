@@ -21,6 +21,7 @@ import Product from './pages/Products/Product';
 import SubscriptionForm from './pages/Home/SubscriptionForm';
 import AddProducts from './pages/Products/AddProducts';
 import AdminProductInfo from './pages/Admin/AdminProductInfo';
+import CustomerQuery from "./pages/Admin/CustomerQuery";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/admin/query-message" element={<CustomerQuery />} />
             <Route path="/admin-login" element={<AdminLogin />} />
             <Route path="/admin-home" element={<AdminHome />} />
             <Route path="/admin/user-details" element={<UserDetails />} />

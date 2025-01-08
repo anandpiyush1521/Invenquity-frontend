@@ -244,7 +244,7 @@ const SubscriptionForm = () => {
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Basic Plan Subscription</h1>
           <p className="text-xl text-gray-600">Everything you need to streamline your business</p>
           <div className="mt-6">
-            <span className="text-5xl font-bold text-indigo-600">$10</span>
+            <span className="text-5xl font-bold text-indigo-600">₹60</span>
             <span className="text-gray-600">/month</span>
           </div>
         </div>

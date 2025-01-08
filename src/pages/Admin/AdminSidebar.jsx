@@ -123,6 +123,20 @@ function AdminSidebar() {
                 <span className="absolute top-1 right-1 w-3 h-3 bg-red-500 rounded-full"></span>
               </a>
             </li>
+
+            {/* Customer Queries */}
+            <li className="relative">
+              <a
+                href="/admin/query-message"
+                className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
+              >
+                <svg className="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7.556 8.5h8m-8 3.5H12m7.111-7H4.89a.896.896 0 0 0-.629.256.868.868 0 0 0-.26.619v9.25c0 .232.094.455.26.619A.896.896 0 0 0 4.89 16H9l3 4 3-4h4.111a.896.896 0 0 0 .629-.256.868.868 0 0 0 .26-.619v-9.25a.868.868 0 0 0-.26-.619.896.896 0 0 0-.63-.256Z"/>
+                </svg>
+                <span className="flex-1 ms-3 whitespace-nowrap">CustomerQuery</span>
+              </a>
+            </li>
+
           </ul>
 
           {/* Separator and Additional Actions */}
