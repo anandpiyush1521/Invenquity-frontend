@@ -64,8 +64,12 @@ const ProductCharts = () => {
         ],
       };
 
+      const colors = [
+        "#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40", "#00A36C",
+      ];
+      
       const bubbleData = {
-        datasets: products.map((p) => ({
+        datasets: products.map((p, index) => ({
           label: p.productName,
           data: [
             {
@@ -74,7 +78,7 @@ const ProductCharts = () => {
               r: p.rating * 3,
             },
           ],
-          backgroundColor: "rgba(75, 192, 192, 0.6)",
+          backgroundColor: colors[index % colors.length], // Assign color from the array
         })),
       };
 

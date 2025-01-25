@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
+import { FaUsers, FaProductHunt, FaClipboardList } from 'react-icons/fa'; // Added icons for better UI
 import PageTitle from '../../components/PageTitle';
+import { BounceLoader } from 'react-spinners'; // Add loading spinner package
 
 function AdminHome() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -40,28 +42,14 @@ function AdminHome() {
   if (isLoading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-white">
-        {/* Spinner Animation */}
-        <div className="relative flex items-center justify-center w-20 h-20 mb-8">
-          <div className="w-full h-full border-4 border-t-transparent border-white rounded-full animate-spin"></div>
-          <div className="absolute w-10 h-10 border-4 border-t-transparent border-white rounded-full animate-spin-slow"></div>
-        </div>
-  
-        {/* Loading Text */}
+        <BounceLoader size={60} color="#fff" />
         <h1 className="text-4xl font-bold animate-pulse mb-4">Loading...</h1>
         <p className="text-lg text-center opacity-90 animate__animated animate__fadeInUp">
           Please wait while we verify your credentials.
         </p>
-  
-        {/* Tips or Messages */}
-        <div className="mt-6">
-          <p className="text-sm opacity-80">
-            Tip: Ensure your internet connection is stable.
-          </p>
-        </div>
       </div>
     );
   }
-  
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-6">
@@ -70,31 +58,45 @@ function AdminHome() {
         Admin Dashboard
       </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full max-w-4xl">
-
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full max-w-6xl">
         {/* User Registration Card */}
-        <div className="bg-white p-8 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 ease-in-out transform animate__animated animate__fadeInLeft">
-          <h2 className="text-3xl font-bold mb-4 text-gray-800">User Registration</h2>
-          <p className="text-gray-600 mb-6">Register users, Verify their details.</p>
-          <a href="/admin/user-registration" className="inline-block bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition-all duration-300">
+        <div className="bg-white p-8 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 ease-in-out transform hover:bg-blue-50">
+          <div className="flex items-center justify-between mb-4">
+            <FaUsers className="text-blue-500 text-4xl" />
+            <div className="text-right">
+              <h2 className="text-3xl font-bold text-gray-800">User Registration</h2>
+              <p className="text-gray-600">Register users, Verify their details.</p>
+            </div>
+          </div>
+          <a href="/admin/user-registration" className="inline-block bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:scale-105">
             Go to User Actions
           </a>
         </div>
 
         {/* User Action Card */}
-        <div className="bg-white p-8 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 ease-in-out transform animate__animated animate__fadeInLeft">
-          <h2 className="text-3xl font-bold mb-4 text-gray-800">User Actions</h2>
-          <p className="text-gray-600 mb-6">Manage users, view their activity, and perform actions like banning, etc.</p>
-          <a href="/admin/user-details" className="inline-block bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition-all duration-300">
+        <div className="bg-white p-8 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 ease-in-out transform hover:bg-yellow-50">
+          <div className="flex items-center justify-between mb-4">
+            <FaClipboardList className="text-yellow-500 text-4xl" />
+            <div className="text-right">
+              <h2 className="text-3xl font-bold text-gray-800">User Actions</h2>
+              <p className="text-gray-600">Manage users, view their activity, and perform actions like banning, etc.</p>
+            </div>
+          </div>
+          <a href="/admin/user-details" className="inline-block bg-yellow-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-yellow-600 transition-all duration-300 transform hover:scale-105">
             Go to User Actions
           </a>
         </div>
 
         {/* Product Action Card */}
-        <div className="bg-white p-8 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 ease-in-out transform animate__animated animate__fadeInRight">
-          <h2 className="text-3xl font-bold mb-4 text-gray-800">Product Actions</h2>
-          <p className="text-gray-600 mb-6">Manage products, update pricing, add new products, and more.</p>
-          <a href="/admin/product/dashboard" className="inline-block bg-green-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-600 transition-all duration-300">
+        <div className="bg-white p-8 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-300 ease-in-out transform hover:bg-green-50">
+          <div className="flex items-center justify-between mb-4">
+            <FaProductHunt className="text-green-500 text-4xl" />
+            <div className="text-right">
+              <h2 className="text-3xl font-bold text-gray-800">Product Actions</h2>
+              <p className="text-gray-600">Manage products, update pricing, add new products, and more.</p>
+            </div>
+          </div>
+          <a href="/admin/product/dashboard" className="inline-block bg-green-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-600 transition-all duration-300 transform hover:scale-105">
             Go to Product Actions
           </a>
         </div>
