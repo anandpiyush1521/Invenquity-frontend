@@ -124,6 +124,32 @@ function AdminSidebar() {
               </a>
             </li>
 
+            {/* User Registration */}
+            <li className="relative">
+              <a
+                href="/admin/user-registration"
+                className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 14.25a4.5 4.5 0 1 0-9 0M12 5.25a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm7.5 12v-.375a3.375 3.375 0 0 0-3.375-3.375h-1.875m5.25 3.75v3M15 18h3M12 21v-3" />
+                </svg>
+                <span className="flex-1 ms-3 whitespace-nowrap">Add User</span>
+              </a>
+            </li>
+
+            {/* Manage User */}
+            <li className="relative">
+              <a
+                href="/admin/user-details"
+                className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 8.25a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0zM4.5 19.5a7.5 7.5 0 0 1 15 0M17.25 14.25l1.5 1.5m-6-6l1.5 1.5m1.5 4.5l1.5 1.5m-6-6l1.5 1.5m0 0L12 15" />
+                </svg>
+                <span className="flex-1 ms-3 whitespace-nowrap">Manage User</span>
+              </a>
+            </li>
+
             {/* Customer Queries */}
             <li className="relative">
               <a
