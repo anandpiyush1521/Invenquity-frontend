@@ -238,7 +238,7 @@ const SubscriptionForm = () => {
           </p>
           <div className="mt-6">
             <span className="text-5xl font-bold text-indigo-600">₹60</span>
-            <span className="text-gray-600">/month</span>
+            {/* <span className="text-gray-600">/month</span> */}
           </div>
         </div>
 
