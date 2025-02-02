@@ -22,6 +22,11 @@ import SubscriptionForm from './pages/Home/SubscriptionForm';
 import AddProducts from './pages/Products/AddProducts';
 import AdminProductInfo from './pages/Admin/AdminProductInfo';
 import CustomerQuery from "./pages/Admin/CustomerQuery";
+import FAQ from './pages/Home/FAQ';
+import HelpCenter from './pages/Home/HelpCenter';
+import GettingStarted from './pages/Home/HelpCenter/GettingStarted';
+import AccountIssues from './pages/Home/HelpCenter/AccountIssues';
+import TechnicalSupport from './pages/Home/HelpCenter/TechnicalSupport';
 
 function App() {
   return (
@@ -34,6 +39,11 @@ function App() {
             <Route path="/subscription" element={<SubscriptionForm />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/help-center" element={<HelpCenter />} />
+            <Route path="/help/getting-started" element={<GettingStarted />} />
+            <Route path="/help/account-issues" element={<AccountIssues />} />
+            <Route path="/help/technical-support" element={<TechnicalSupport />} />
             <Route path="/login" element={<Login />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/admin/query-message" element={<CustomerQuery />} />
