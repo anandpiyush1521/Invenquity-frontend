@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { Mail, Github, Twitter, Linkedin } from "lucide-react";
 import emailjs from "emailjs-com";
 import { ToastContainer, toast } from "react-toastify";
