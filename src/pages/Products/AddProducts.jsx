@@ -43,41 +43,32 @@ function AddProduct () {
   };
 
   const addBulkProduct = () => {
-    setProducts([
-      ...products,
-      {
-        productCategory: "",
-        productName: "",
-        skuCode: "",
-        rating: "",
-        quality: "",
-        quantity: "",
-        minimumProducts: "",
-        price: "",
-        description: "",
-      },
-    ]);
+    setProducts([...products, { ...product }]);
   };
 
   const removeBulkProduct = (index) => {
-    const updatedProducts = products.filter((_, i) => i !== index);
-    setProducts(updatedProducts);
+    setProducts(products.filter((_, i) => i !== index));
   };
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
+    const token = localStorage.getItem("token");
     try {
-      const response = isBulk
-        ? await fetch("http://localhost:8080/api/invenquity/product/bulk", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(products),
-          })
-        : await fetch("http://localhost:8080/api/invenquity/product", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(product),
-          });
+      const response = await fetch(
+        `http://localhost:8080/api/invenquity/product${isBulk ? "/bulk" : ""}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(isBulk ? products : product),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to add product(s)");
+      }
 
       setSuccessMessage(
         isBulk ? "Products added successfully!" : "Product added successfully!"

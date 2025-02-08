@@ -74,7 +74,16 @@ function AdminDashboard() {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch("http://localhost:8080/api/invenquity/product");
+        const response = await fetch(
+          "http://localhost:8080/api/invenquity/product",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
         const data = await response.json();
         setProducts(data);
       } catch (error) {

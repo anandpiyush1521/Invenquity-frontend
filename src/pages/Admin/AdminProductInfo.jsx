@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Camera, Search, Package, Filter, Star } from "lucide-react";
+import { Camera, Search, Package, Filter, Star, Edit, Trash } from "lucide-react";
 import AdminSidebar from "./AdminSidebar";
 import PageTitle from "../../components/PageTitle";
 
@@ -15,7 +15,14 @@ const AdminProductInfo = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8080/api/invenquity/product"
+        "http://localhost:8080/api/invenquity/product",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
       );
       const data = await response.json();
       setProducts(data);
@@ -34,6 +41,35 @@ const AdminProductInfo = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  // Delete Product
+  const deleteProduct = async (productId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/invenquity/product/id/${productId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response.ok) {
+        setProducts(products.filter((product) => product.id !== productId));
+      } else {
+        console.error("Error deleting product:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
+  };
+
+  // Edit Product (Placeholder function, implement as needed)
+  const editProduct = (productId) => {
+    console.log("Edit product with ID:", productId);
+    // Implement edit functionality as needed
+  };
 
   // Filter Products
   const filteredProducts = products.filter((product) => {
@@ -179,6 +215,23 @@ const AdminProductInfo = () => {
                             {product.skuCode}
                           </span>
                         </div>
+                      </div>
+
+                      <div className="flex justify-end gap-2 mt-4">
+                        <button
+                          className="flex items-center gap-1 text-blue-600 hover:text-blue-800"
+                          onClick={() => editProduct(product.id)}
+                        >
+                          <Edit className="w-4 h-4" />
+                          Edit
+                        </button>
+                        <button
+                          className="flex items-center gap-1 text-red-600 hover:text-red-800"
+                          onClick={() => deleteProduct(product.id)}
+                        >
+                          <Trash className="w-4 h-4" />
+                          Delete
+                        </button>
                       </div>
                     </div>
                   </div>

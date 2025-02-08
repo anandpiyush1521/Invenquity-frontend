@@ -30,7 +30,14 @@ const Product = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "http://localhost:8080/api/invenquity/product"
+        "http://localhost:8080/api/invenquity/product",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
       );
       const data = await response.json();
       setProducts(data);
