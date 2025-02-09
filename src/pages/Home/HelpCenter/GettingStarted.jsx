@@ -1,9 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
+import PageTitle from '../../../components/PageTitle';
 
 function GettingStarted(){
   return (
     <div className="max-w-4xl mx-auto p-10">
+      <PageTitle title="InvenQuity | Getting Started" />
       <h1 className="text-4xl font-extrabold text-center mb-6 text-indigo-600">Getting Started</h1>
       <p className="text-gray-700 text-lg text-center mb-6">
         Learn how to set up your account and start managing inventory efficiently.

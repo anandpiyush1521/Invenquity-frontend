@@ -27,6 +27,8 @@ import HelpCenter from './pages/Home/HelpCenter';
 import GettingStarted from './pages/Home/HelpCenter/GettingStarted';
 import AccountIssues from './pages/Home/HelpCenter/AccountIssues';
 import TechnicalSupport from './pages/Home/HelpCenter/TechnicalSupport';
+import AdminAddProduct from './pages/Admin/AdminAddProduct';
+import SubscriptionInfo from './pages/SubscriptionInfo';
 
 function App() {
   return (
@@ -46,10 +48,10 @@ function App() {
             <Route path="/help/technical-support" element={<TechnicalSupport />} />
             <Route path="/login" element={<Login />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/admin/query-message" element={<CustomerQuery />} />
             <Route path="/admin-login" element={<AdminLogin />} />
             <Route path="/admin-home" element={<AdminHome />} />
             <Route path="/admin/user-details" element={<UserDetails />} />
+            <Route path="/admin/add-product" element={<AdminAddProduct />} />
             <Route path="/admin/user-registration" element={<UserRegistration />} />
             <Route path="/admin/product/dashboard" element={<AdminDashboard />} />
             <Route path="/admin/product/notification" element={<AdminNotification />} />
@@ -60,6 +62,9 @@ function App() {
             <Route path="/product/notifications" element={<Notifications />} />
             <Route path="/product/product-info" element={<Product />} />
             <Route path="/product/add" element={<AddProducts />} />
+
+            <Route path="/invenquity/product/subscription-info" element={<SubscriptionInfo />} />
+            <Route path="/invenquity/product/subscription-info/query" element={<CustomerQuery />} />
           </Routes>
         </div>
         <Footer />  
