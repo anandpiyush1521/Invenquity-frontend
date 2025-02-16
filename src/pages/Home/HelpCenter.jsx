@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Search, BookOpen, UserCircle, Wrench, Mail, ArrowRight, Clock, Phone } from "lucide-react";
 import PageTitle from '../../components/PageTitle';
+import QuickLinkModal from '../../components/QuickLinkModal';
 
 function HelpCenter() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeQuickLink, setActiveQuickLink] = useState("");
 
   const topics = [
     {
@@ -33,7 +36,7 @@ function HelpCenter() {
       title: "Technical Support",
       description: "Need help with a bug or technical issue? Reach out to our support team.",
       link: "/help/technical-support",
-      icon: Wrench,  // Changed from WrenchScrewdriver to Wrench
+      icon: Wrench,
       popularArticles: [
         "Common Error Messages",
         "System Requirements",
@@ -58,6 +61,11 @@ function HelpCenter() {
     { text: "Live Chat", icon: Phone },
     { text: "Support Hours", icon: Clock },
   ];
+
+  const handleQuickLinkClick = (linkText) => {
+    setActiveQuickLink(linkText);
+    setIsModalOpen(true);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
@@ -109,6 +117,7 @@ function HelpCenter() {
               <button
                 key={index}
                 className="flex items-center px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-all border border-gray-100"
+                onClick={() => handleQuickLinkClick(link.text)}
               >
                 <link.icon className="h-4 w-4 mr-2 text-indigo-600" />
                 <span className="text-gray-700">{link.text}</span>
@@ -164,6 +173,13 @@ function HelpCenter() {
           ))}
         </div>
       </div>
+
+      {/* QuickLinkModal */}
+      <QuickLinkModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        activeLink={activeQuickLink}
+      />
     </div>
   );
 }

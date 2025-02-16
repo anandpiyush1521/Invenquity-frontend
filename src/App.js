@@ -21,7 +21,7 @@ import Product from './pages/Products/Product';
 import SubscriptionForm from './pages/Home/SubscriptionForm';
 import AddProducts from './pages/Products/AddProducts';
 import AdminProductInfo from './pages/Admin/AdminProductInfo';
-import CustomerQuery from "./pages/Admin/CustomerQuery";
+import CustomerQuery from "./pages/CustomerQuery";
 import FAQ from './pages/Home/FAQ';
 import HelpCenter from './pages/Home/HelpCenter';
 import GettingStarted from './pages/Home/HelpCenter/GettingStarted';

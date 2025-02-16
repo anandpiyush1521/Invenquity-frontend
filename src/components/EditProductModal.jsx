@@ -1,4 +1,6 @@
 import React from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const EditProductModal = ({ open, onClose, product, categories, onSave }) => {
   if (!open) return null;
@@ -17,6 +19,7 @@ const EditProductModal = ({ open, onClose, product, categories, onSave }) => {
       description: formData.get("description"),
     };
     onSave(updatedProduct);
+    toast.success(`${updatedProduct.productName} updated successfully!`);
   };
 
   return (
@@ -148,6 +151,7 @@ const EditProductModal = ({ open, onClose, product, categories, onSave }) => {
           </div>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };

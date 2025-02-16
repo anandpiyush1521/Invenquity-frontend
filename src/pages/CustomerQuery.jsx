@@ -12,7 +12,7 @@ import {
   AlertCircle,
   CheckCircle2,
 } from "lucide-react";
-import PageTitle from "../../components/PageTitle";
+import PageTitle from "../components/PageTitle";
 
 function CustomerQuery() {
   const [queries, setQueries] = useState([]);

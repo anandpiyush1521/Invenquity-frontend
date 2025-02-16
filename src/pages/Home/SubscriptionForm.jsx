@@ -4,7 +4,7 @@ import { loadStripe } from "@stripe/stripe-js"; // ✅ Import Stripe
 import PageTitle from "../../components/PageTitle";
 
 // ✅ Load Stripe with your publishable key
-const stripePromise = loadStripe("pk_test_51NJRc9SF6siS2FbRW6DveI59HgkHVFKOCqkCUdthFawsdO58FDdeJYpsTdFP4xBo8Pwv5X2xwjFEYqQLEKmIHg2a00MFBOyL42");
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
 const SubscriptionForm = () => {
   const navigate = useNavigate();
